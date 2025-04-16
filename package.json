@@ -1,0 +1,11 @@
+{
+    "name": "daily-stoic-reader",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start:web": "cd src/web && npm run dev",
+        "build:web": "cd src/web && npm run build",
+        "start": "npm run start:web",
+        "build": "npm run build:web"
+    }
+}

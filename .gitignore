@@ -43,3 +43,6 @@ frontend/out/
 database/*.db
 database/*.sqlite
 database/migrations/
+
+# Keys
+keystore.properties

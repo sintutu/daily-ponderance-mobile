@@ -1,5 +1,6 @@
 {
   "appId": "com.sintutu.dailyponderance",
   "appName": "Daily Ponderance",
-  "webDir": "src/web/dist"
+  "webDir": "src/web/dist",
+  "bundledWebRuntime": false
 }

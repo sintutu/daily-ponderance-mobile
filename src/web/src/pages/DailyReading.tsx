@@ -38,28 +38,39 @@ const DailyReading: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    try {
-      const match = date.match(/^\d{4}-(\d{2}-\d{2})$/);
-      if (!match) {
-        throw new Error('Invalid date format. Use YYYY-MM-DD.');
-      }
-
-      const readingsTyped: Readings = readings;
-      const mmdd = match[1];
-      const reading = readingsTyped[mmdd];
-
-      if (!reading) {
-        setError('Reading not found for the given date.');
-        setReading(null);
-      } else {
-        setReading(reading);
-        setError(null);
-      }
-    } catch (err: any) {
-      setError(err.message);
-      setReading(null);
+  try {
+    const match = date.match(/^\d{4}-(\d{2}-\d{2})$/);
+    if (!match) {
+      throw new Error("Invalid date format. Use YYYY-MM-DD.");
     }
-  }, [date]);
+
+    const readingsTyped: Readings = readings;
+    const mmdd = match[1];
+    const selectedReading = readingsTyped[mmdd];
+
+    setReading(
+      selectedReading ?? {
+        theme: "No theme found",
+        title: "Unknown Reading",
+        quote: "No quote available",
+        author: "Unknown Author",
+        citation: "No citation available",
+      }
+    );
+
+    setError(selectedReading ? null : "Reading not found for the given date.");
+  } catch (err: any) {
+    setError(err.message);
+    setReading({
+      theme: "No theme found",
+      title: "Unknown Reading",
+      quote: "No quote available",
+      author: "Unknown Author",
+      citation: "No citation available",
+    });
+  }
+}, [date]);
+
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: 'auto', padding: '1rem' }}>

@@ -1,20 +1,15 @@
 apply plugin: 'com.android.application'
 
-def keystoreProperties = new Properties()
-file("../../keystore.properties").withInputStream {
-    keystoreProperties.load(it)
-}
-
 android {
     namespace "com.sintutu.dailyponderance"
     compileSdk rootProject.ext.compileSdkVersion
 
     signingConfigs {
         release {
-            storeFile file(System.getenv("USERPROFILE") + "/OneDrive/keys/sintutu.keystore")
-            storePassword keystoreProperties["storePassword"]
-            keyAlias keystoreProperties["keyAlias"]
-            keyPassword keystoreProperties["keyPassword"]
+            storeFile file(System.getenv("KEYSTORE_PATH"))
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias "daily-ponderance-mobile"
+            keyPassword System.getenv("KEYSTORE_PASSWORD")
         }
     }
 

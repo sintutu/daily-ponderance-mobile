@@ -6,7 +6,7 @@
         "start:web": "cd src/web && npm run dev",
         "start": "npm run start:web",
         "build:web": "cd src/web && npm run build",
-        "copy-json": "cp src/web/src/data/daily_stoic_readings.json android/app/src/main/assets/public/assets/data.json",
+        "copy-json": "cp src/web/src/data/daily_stoic_readings.json android/app/src/main/assets/public/assets/daily_stoic_readings.json",
         "postbuild": "npx cap copy && npx cap sync android && npm run copy-json",
         "build": "npm run build:web && npm run postbuild"
     },

@@ -15,19 +15,6 @@ const getPacificDate = (): string => {
   return `${year}-${month}-${day}`; // YYYY-MM-DD
 };
 
-const formatDateWithSuffix = (date: string): string => {
-  const suffixes = ["th", "st", "nd", "rd"];
-  const [year, month, day] = date.split("-").map(Number);
-
-  const monthName = new Date(year, month - 1, day).toLocaleString("default", { month: "long" });
-  const daySuffix = day % 10 === 1 && day !== 11 ? suffixes[1]
-    : day % 10 === 2 && day !== 12 ? suffixes[2]
-    : day % 10 === 3 && day !== 13 ? suffixes[3]
-    : suffixes[0];
-
-  return `${monthName} ${day}${daySuffix}`;
-};
-
 const getMonthName = (date: string): string => {
   const [year, month, day] = date.split("-").map(Number);
   return new Date(year, month - 1, day).toLocaleString("default", { month: "long" });

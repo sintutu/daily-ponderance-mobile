@@ -4,9 +4,11 @@
     "private": true,
     "scripts": {
         "start:web": "cd src/web && npm run dev",
-        "build:web": "cd src/web && npm run build",
         "start": "npm run start:web",
-        "build": "npm run build:web"
+        "build:web": "cd src/web && npm run build",
+        "copy-json": "cp src/web/src/data/daily_stoic_readings.json android/app/src/main/assets/public/assets/data.json",
+        "postbuild": "npx cap copy && npx cap sync android && npm run copy-json",
+        "build": "npm run build:web && npm run postbuild"
     },
     "dependencies": {
         "@capacitor/android": "^7.2.0",

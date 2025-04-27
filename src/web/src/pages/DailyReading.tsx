@@ -68,14 +68,14 @@ const DailyReading: React.FC = () => {
         <div style={{ marginTop: '1rem', border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}>
           <h3>{reading.title}</h3>
           <blockquote>
-            <p>"{reading.quote}"</p>
+            <p>"{reading.quote.replace(/--/g, "\u2014")}"</p>
           </blockquote>
           <footer>- {reading.author}, <em>{reading.citation}</em></footer>
           {/* Add the CopyButton here */}
           <CopyButton
             date={date}
             title={reading.title}
-            quote={reading.quote}
+            quote={reading.quote.replace(/--/g, "\u2014")}
             author={reading.author}
             citation={reading.citation}
           />
